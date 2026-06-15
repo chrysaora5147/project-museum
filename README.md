@@ -9,4 +9,4 @@ A small static project notebook hosted on Vercel.
 
 ## Deploying
 
-Import this repository into Vercel as a static site. No build command is required.
+This repository is connected to the Vercel project `project-museum-vercel`. No build command is required.
