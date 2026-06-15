@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Project Museum icon">
+  <rect width="64" height="64" rx="12" fill="#ddd5c8"/>
+  <rect x="12" y="8" width="40" height="48" rx="2" fill="#fffefb" stroke="#202020" stroke-width="3"/>
+  <path d="M21 8v48" stroke="#ce4638" stroke-width="2" opacity=".45"/>
+  <path d="M17 20h30M17 28h30M17 36h30M17 44h30" stroke="#285fc9" stroke-width="1.6" opacity=".28"/>
+  <rect x="23" y="5" width="18" height="8" rx="1" fill="#f1db94" opacity=".9" transform="rotate(-6 32 9)"/>
+  <path d="M25 27c5-6 13-5 16 1 2 5-2 10-9 13-7-3-11-8-7-14z" fill="#ffd8e8" stroke="#202020" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M27 32l4 4 8-10" fill="none" stroke="#187a4f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
