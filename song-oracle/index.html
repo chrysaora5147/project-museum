@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Song Oracle</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <main class="shell">
+      <section class="turntable" aria-label="Song Oracle">
+        <div class="topbar">
+          <p class="eyebrow">Jukebox Fortune</p>
+          <button class="icon-button" id="resetButton" type="button" aria-label="เริ่มใหม่" title="เริ่มใหม่">↻</button>
+        </div>
+
+        <div class="hero-copy">
+          <h1>ตู้เพลงดูดวง</h1>
+          <p>กรอกนิดเดียว แล้วให้ playlist ของคุณออกใบเซียมซีเป็นเพลงประจำวัน.</p>
+        </div>
+
+        <div class="jukebox-stage" aria-hidden="true">
+          <div class="marquee">
+            <span>PLAYLIST BM</span>
+            <strong id="trackCountLabel">999 TRACKS</strong>
+          </div>
+          <div class="equalizer">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="record" id="record">
+            <div class="record-label">
+              <span id="recordGlyph">♪</span>
+            </div>
+          </div>
+          <div class="ticket-stub">DAILY SONG</div>
+        </div>
+
+        <div class="controls">
+          <label>
+            <span>เรียกคุณว่า</span>
+            <input id="nameInput" maxlength="20" autocomplete="nickname" placeholder="ชื่อเล่น" />
+          </label>
+
+          <label>
+            <span>เรื่องที่อยากถาม</span>
+            <select id="topicSelect">
+              <option value="self">ตัวเอง / ใจ</option>
+              <option value="work">งาน / โปรเจกต์</option>
+              <option value="love">ความรัก / คนคุย</option>
+              <option value="money">เงิน / จังหวะชีวิต</option>
+              <option value="chaos">เอาเพลงที่ช่วยให้รอดวันนี้</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="astro-grid">
+          <label>
+            <span>เกิดวันที่</span>
+            <select id="birthDaySelect">
+              <option value="">วัน</option>
+            </select>
+          </label>
+
+          <label>
+            <span>เดือนเกิด</span>
+            <select id="birthMonthSelect">
+              <option value="">เดือน</option>
+              <option value="01">มกราคม</option>
+              <option value="02">กุมภาพันธ์</option>
+              <option value="03">มีนาคม</option>
+              <option value="04">เมษายน</option>
+              <option value="05">พฤษภาคม</option>
+              <option value="06">มิถุนายน</option>
+              <option value="07">กรกฎาคม</option>
+              <option value="08">สิงหาคม</option>
+              <option value="09">กันยายน</option>
+              <option value="10">ตุลาคม</option>
+              <option value="11">พฤศจิกายน</option>
+              <option value="12">ธันวาคม</option>
+            </select>
+          </label>
+
+          <label>
+            <span>ปีเกิด</span>
+            <select id="birthYearSelect">
+              <option value="">ปี</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="question-row">
+          <span>คำถาม</span>
+          <input id="questionInput" maxlength="78" placeholder="เช่น วันนี้ควรเริ่มเลยไหม" />
+        </label>
+
+        <button class="primary-button" id="drawButton" type="button">กดตู้เพลง</button>
+      </section>
+
+      <section class="reading" aria-label="ผลดูดวงจากเพลง">
+        <div class="date-line" id="dateLine"></div>
+
+        <div class="tuning-panel" id="tuningPanel" aria-live="polite">
+          <div class="ticker">
+            <span>กำลังจูนคลื่น</span>
+            <span>อ่านวันเกิด</span>
+            <span>สับ playlist</span>
+            <span>พิมพ์ใบเซียมซี</span>
+          </div>
+          <div class="tuning-bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <article class="song-card" id="songCard">
+          <div class="cover" id="coverArt">
+            <span id="coverGlyph">♪</span>
+          </div>
+          <div class="song-meta">
+            <p class="eyebrow">Now Printing</p>
+            <h2 id="songTitle">ยังไม่มีเพลง</h2>
+            <p id="artistName">กดสุ่มก่อน แล้วเพลงจะเดินมาหาเอง</p>
+          </div>
+        </article>
+
+        <div class="oracle-copy">
+          <p id="fortuneText">เว็บนี้ไม่เล่นเพลงเอง แค่สุ่มชื่อเพลงและพาไปฟังบนแพลตฟอร์มที่ถูกทางกว่า.</p>
+        </div>
+
+        <dl class="signal-grid">
+          <div>
+            <dt>เลขนำโชค</dt>
+            <dd id="songEnergy">-</dd>
+          </div>
+          <div>
+            <dt>สีนำโชค</dt>
+            <dd id="lifeHook">-</dd>
+          </div>
+          <div>
+            <dt>อิโมจินำโชค</dt>
+            <dd id="tinyQuest">-</dd>
+          </div>
+          <div>
+            <dt>เวลานำโชค</dt>
+            <dd id="warningText">-</dd>
+          </div>
+        </dl>
+
+        <div class="answer">
+          <p class="field-title">คำตอบแบบตรงๆ</p>
+          <p id="oracleAnswer">เพลงยังไม่ขึ้น แต่เหมือน intro มาแล้ว.</p>
+        </div>
+
+        <div class="listen-row">
+          <a id="spotifyLink" class="listen-button" href="https://open.spotify.com/search/song%20oracle" target="_blank" rel="noreferrer">หาใน Spotify</a>
+          <a id="youtubeLink" class="listen-button secondary" href="https://www.youtube.com/results?search_query=song%20oracle" target="_blank" rel="noreferrer">หาใน YouTube</a>
+        </div>
+      </section>
+    </main>
+    <script src="./playlist-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
